@@ -8,36 +8,12 @@ pipeline {
         stagingServer = 'staging-myproject.mycompany.com'
         productionServer = 'production-myproject.mycompany.com'
     }
-    stages {
-        stage('checkout git') {
+    stages {    
+        stage('hello') {
             steps {
-                git branch: branch, credentialsId: 'GitCredentials', url: scmUrl
+                echo "Prueba Jenkins"
             }
-        }
-
-        stage('build') {
-            steps {
-                sh 'mvn clean package -DskipTests=true'
-            }
-        }
-
-        stage('deploy development'){
-            steps {
-                deploy(developmentServer, serverPort)
-            }
-        }
-
-        stage('deploy staging'){
-            steps {
-                deploy(stagingServer, serverPort)
-            }
-        }
-
-        stage('deploy production'){
-            steps {
-                deploy(productionServer, serverPort)
-            }
-        }
+        }     
     }
     post {
         always{
