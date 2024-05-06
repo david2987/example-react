@@ -40,7 +40,7 @@ pipeline {
         }
     }
     post {
-        alwayas{
+        always{
           echo "Finalizo la Tarea"
         }
         failure {
